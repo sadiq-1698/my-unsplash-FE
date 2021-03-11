@@ -2,7 +2,14 @@
   box-shadow: var(--box-shadow);
   border-radius: var(--larger-border);
   padding: 16px 25px;
+  outline: none;
+  border: none;
+  cursor: pointer;
   background: var(--button-primary);
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: var(--zeta);
+  font-weight: var(--semi-bold);
 }
 
 .button.color-red {
