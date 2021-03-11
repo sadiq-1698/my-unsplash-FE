@@ -8,6 +8,7 @@
   --green: #3db46d;
   --red: #eb5757;
   --grey: #bdbdbd;
+  --button-primary: #0275d8;
 
   /* font weights */
   --regular: 400;
@@ -28,7 +29,7 @@
   --larger-border: 12px;
 
   /* other */
-  --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 * {
