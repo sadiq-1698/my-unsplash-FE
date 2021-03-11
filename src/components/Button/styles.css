@@ -1,0 +1,14 @@
+.button {
+  box-shadow: var(--box-shadow);
+  border-radius: var(--larger-border);
+  padding: 16px 25px;
+  background: var(--button-primary);
+}
+
+.button.color-red {
+  background: var(--red);
+}
+
+.button.color-green {
+  background: var(--green);
+}
