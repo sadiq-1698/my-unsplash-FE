@@ -1,11 +1,8 @@
 import "./App.css";
+import MyUnsplashApp from "./components/MyUnsplashApp/MyUnsplashApp";
 
 function App() {
-  return (
-    <div>
-      <p>MY UNSPLASH</p>
-    </div>
-  );
+  return <MyUnsplashApp />;
 }
 
 export default App;
