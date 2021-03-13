@@ -7,6 +7,7 @@
   bottom: 0;
   z-index: var(--backdrop-index);
   background-color: rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 
 .modal-box {
@@ -16,6 +17,5 @@
   padding: 25px 30px;
   margin: 0 auto;
   margin-top: 250px;
-  min-width: 300px;
   max-width: 620px;
 }
