@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./styles.css";
 
-const Modal = ({ children, modalState, barrierDismiss, shouldCloseOnEsc }) => {
+const Modal = ({ children, modalState, barrierDismiss }) => {
   return (
     <Fragment>
       {modalState.modalOpen && (
@@ -31,13 +31,11 @@ const Modal = ({ children, modalState, barrierDismiss, shouldCloseOnEsc }) => {
 Modal.propTypes = {
   modalState: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
-  barrierDismiss: PropTypes.bool,
-  shouldCloseOnEsc: PropTypes.bool
+  barrierDismiss: PropTypes.bool
 };
 
 Modal.defaultProps = {
-  barrierDismiss: true,
-  shouldCloseOnEsc: true
+  barrierDismiss: true
 };
 
 export default Modal;
