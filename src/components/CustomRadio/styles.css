@@ -1,0 +1,19 @@
+.radio {
+  padding: 16px;
+  margin-right: 18px;
+  border: 2px solid var(--input-border);
+  border-radius: var(--medium-border);
+  font-family: var(--font-family);
+  font-weight: var(--semi-bold);
+  font-size: var(--zeta);
+  cursor: pointer;
+  flex: 1;
+}
+
+.radio:last-child {
+  margin-right: 0;
+}
+
+.radio.selected {
+  border: 2px solid var(--button-primary);
+}
