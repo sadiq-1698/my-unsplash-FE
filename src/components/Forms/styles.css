@@ -1,0 +1,36 @@
+.button-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.field-label {
+  margin-bottom: 8px;
+  font-family: var(--font-family);
+  font-weight: var(--regular);
+  font-size: var(--gamma);
+}
+
+.modal-header {
+  font-family: var(--font-family);
+  font-weight: var(--semi-bold);
+  font-size: var(--epsilon);
+}
+
+.cancel-button {
+  color: var(--grey);
+  font-family: var(--font-family);
+  font-weight: var(--regular);
+  font-size: var(--zeta);
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.field-margin {
+  margin-bottom: 18px;
+}
+
+.field-margin.top {
+  margin-top: 18px;
+  justify-content: space-between;
+}
