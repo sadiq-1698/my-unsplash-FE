@@ -1,10 +1,13 @@
 import { Fragment } from "react";
-import "./styles.css";
+import PropTypes from "prop-types";
+
 import ModalHeader from "./ModalHeader";
 import InputField from "../InputField/InputField";
 import FieldWrapper from "./FieldWrapper";
 import ModalButtonSection from "./ModalButtonSection";
 import Button from "../Button/Button";
+
+import "./styles.css";
 
 const AddImage = ({ closeModal, handleSubmit }) => {
   return (
@@ -21,6 +24,11 @@ const AddImage = ({ closeModal, handleSubmit }) => {
       </ModalButtonSection>
     </Fragment>
   );
+};
+
+AddImage.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default AddImage;
