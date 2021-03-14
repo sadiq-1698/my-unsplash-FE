@@ -6,17 +6,19 @@ import Button from "../Button/Button";
 import useModal from "../../hooks/useModal";
 
 import "./styles.css";
+import InputField from "../InputField/InputField";
+import AddGallery from "../Forms/AddGallery";
 
 const MyUnsplashApp = () => {
-  const { toggleModal, modalState } = useModal();
+  const { toggleModal, closeModal, modalState } = useModal();
 
   return (
     <Fragment>
       <Button color="green" text="Add image" onClick={toggleModal} />
+
+      <InputField iconPrefix />
       <Modal modalState={modalState}>
-        <div>
-          <Button text="Close modal" onClick={toggleModal} />
-        </div>
+        <AddGallery closeModal={closeModal} />
       </Modal>
     </Fragment>
   );
