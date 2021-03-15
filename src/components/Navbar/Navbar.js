@@ -11,7 +11,7 @@ const Navbar = () => {
           src={process.env.PUBLIC_URL + "/my_unsplash_logo.svg"}
           alt="logo"
         />
-        <InputField iconPrefix />
+        <InputField iconPrefix placeholder="Search by name" />
       </div>
       <Button color="green" text="Add a photo" />
     </div>
