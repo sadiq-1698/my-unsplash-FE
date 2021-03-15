@@ -47,3 +47,7 @@
 .d-flex {
   display: flex;
 }
+
+.d-flex.justify-space-between {
+  justify-content: space-between;
+}
