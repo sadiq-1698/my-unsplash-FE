@@ -1,0 +1,9 @@
+.app-wrapper {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.nav-container {
+  margin-top: 32px;
+  margin-bottom: 75px;
+}
