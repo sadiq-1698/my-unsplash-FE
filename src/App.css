@@ -10,6 +10,7 @@
   --white: #ffffff;
   --grey: #bdbdbd;
   --input-border: #4f4f4f;
+  --light-grey: #f4f4f4;
   --button-primary: #0275d8;
 
   /* font weights */
@@ -50,4 +51,11 @@
 
 .d-flex.justify-space-between {
   justify-content: space-between;
+}
+
+.link {
+  font-family: var(--font-family);
+  font-weight: var(--semi-bold);
+  font-size: var(--gamma);
+  text-decoration: none;
 }
