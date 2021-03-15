@@ -1,6 +1,7 @@
 import "./styles.css";
 import Button from "../Button/Button";
 import InputField from "../InputField/InputField";
+import { IMAGE_UPLOADER_LINK } from "../../globals/constants";
 
 const Navbar = () => {
   return (
@@ -13,7 +14,17 @@ const Navbar = () => {
         />
         <InputField iconPrefix placeholder="Search by name" />
       </div>
-      <Button color="green" text="Add a photo" />
+      <div>
+        <a
+          className="link nav-link"
+          href={IMAGE_UPLOADER_LINK}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Try image uploader
+        </a>
+        <Button color="green" text="Add a photo" />
+      </div>
     </div>
   );
 };
