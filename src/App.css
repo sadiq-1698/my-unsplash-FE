@@ -59,3 +59,11 @@
   font-size: var(--gamma);
   text-decoration: none;
 }
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.smooth {
+  transition: 0.3s ease all;
+}
