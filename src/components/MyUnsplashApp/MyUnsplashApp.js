@@ -5,9 +5,7 @@ import "./styles.css";
 const MyUnsplashApp = () => {
   return (
     <div className="app-wrapper">
-      <div className="nav-container">
-        <Navbar />
-      </div>
+      <div className="nav-container">{/* <Navbar /> */}</div>
     </div>
   );
 };
