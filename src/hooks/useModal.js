@@ -17,7 +17,7 @@ const useModal = () => {
     openModal,
     closeModal,
     modalOpen,
-    modalState
+    ...modalState
   };
 };
 
