@@ -9,6 +9,12 @@
   box-shadow: inset 20px 20px 70px #d9d9d9, inset -20px -20px 70px #ffffff;
 }
 
+.current-gallery {
+  font-family: var(--font-family);
+  font-weight: var(--semi-bold);
+  color: var(--grey);
+}
+
 .dropdown-list {
   width: 100%;
   position: absolute;
@@ -22,6 +28,9 @@
 
 .dropdown-item {
   padding: 8px 16px;
+  font-family: var(--font-family);
+  font-weight: var(--regular);
+  font-size: var(--gamma);
   transition: 0.1s all ease-in;
   cursor: pointer;
 }
