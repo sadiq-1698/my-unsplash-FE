@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAllGalleries } from "../../api/gallery";
 import { CHEVRON_DOWN } from "../../globals/iconClasses";
 import "./styles.css";
 
 const Dropdown = () => {
   const [galleries, showGalleries] = useState(false);
+  const [items, setItems] = useState(null);
   const toggleDropdown = () => showGalleries(prev => !prev);
 
-  const items = ["Sadiq", "Umma", "Bapa", "Didi", "Bhaiyya"];
+  useEffect(() => {
+    const getGalleries = async () => {
+      let result = await getAllGalleries();
+      console.log(result.data);
+      setItems([...result.data]);
+    };
+    getGalleries();
+  }, []);
 
   return (
     <div className="d-flex justify-space-between align-items-center">
@@ -27,8 +36,8 @@ const Dropdown = () => {
           <div className="dropdown-list">
             {items.map(val => {
               return (
-                <div key={val} className="dropdown-item">
-                  {val}
+                <div key={val._id} className="dropdown-item">
+                  {val.name}
                 </div>
               );
             })}
