@@ -11,8 +11,7 @@ const Dropdown = () => {
   useEffect(() => {
     const getGalleries = async () => {
       let result = await getAllGalleries();
-      console.log(result.data);
-      setItems([...result.data]);
+      setItems([...result]);
     };
     getGalleries();
   }, []);
