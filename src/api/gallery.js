@@ -13,7 +13,8 @@ const addGallery = async (name, isPrivate, password) => {
 
 const getAllGalleries = async () => {
   const response = await axios.get(API_URL + "gallery/all");
-  return response;
+  const { data } = response;
+  return data;
 };
 
 export { addGallery, getAllGalleries };
