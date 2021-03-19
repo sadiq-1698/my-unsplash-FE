@@ -11,10 +11,10 @@ const addImage = async (label, url, galleryId) => {
   return response;
 };
 
-// const getAllImages = async () => {
-//   const response = await axios.get(API_URL + "image/all");
-//   const { data } = response;
-//   return data;
-// };
+const getAllImages = async () => {
+  const response = await axios.get(API_URL + "image/all");
+  const { data } = response;
+  return data;
+};
 
-// export { addImage, getAllImages };
+export { addImage, getAllImages };
