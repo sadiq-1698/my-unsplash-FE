@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
 import { getAllImages } from "../../api/image";
+import Image from "../Image/Image";
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
@@ -16,12 +17,11 @@ const Gallery = () => {
 
   return (
     <div>
-      <div>
+      <div className="container">
         {images.map(({ _id, url, label }) => {
           return (
             <div key={_id}>
-              <img src={url} alt={label} />
-              <p>{label}</p>
+              <Image source={url} label={label} />
             </div>
           );
         })}
