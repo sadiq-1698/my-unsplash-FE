@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 const Gallery = () => {
-
-  const [images]
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const getImages = async () => {
-
-    }
+    const getImages = async () => {};
 
     getImages();
   }, []);
