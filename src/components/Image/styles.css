@@ -1,0 +1,8 @@
+.image-container {
+  min-height: 100px;
+  min-width: 100px;
+  border-radius: var(--image-border);
+  background: transparent;
+  background-size: 100% 100%;
+  background-color: transparent;
+}
