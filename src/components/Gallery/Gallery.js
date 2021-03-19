@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import "./styles.css";
 
 const Gallery = () => {
