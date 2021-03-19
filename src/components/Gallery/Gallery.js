@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
+import { getAllImages } from "../../api/image";
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const getImages = async () => {};
+    const getImages = async () => {
+      const result = await getAllImages();
+      setImages([...result]);
+    };
 
     getImages();
   }, []);
