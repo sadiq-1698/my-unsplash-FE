@@ -1,7 +1,17 @@
-import PropTypes from "prop-types";
 import "./styles.css";
 
-const Gallery = ({ images }) => {
+const Gallery = () => {
+
+  const [images]
+
+  useEffect(() => {
+    const getImages = async () => {
+
+    }
+
+    getImages();
+  }, []);
+
   return (
     <div>
       <div>
@@ -16,10 +26,6 @@ const Gallery = ({ images }) => {
       </div>
     </div>
   );
-};
-
-Gallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Gallery;
