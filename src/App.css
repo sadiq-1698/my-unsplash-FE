@@ -69,6 +69,6 @@
   transform: rotate(180deg);
 }
 
-/* .smooth {
+.smooth {
   transition: 0.3s ease all;
-} */
+}
