@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-img {
+img.gallery-image {
   object-fit: cover;
   border-radius: var(--image-border);
   opacity: 1;
@@ -48,7 +48,7 @@ img {
 }
 
 .image-container:hover img {
-  filter: brightness(30%);
+  filter: brightness(55%);
 }
 
 .image-container:hover .btn-delete {
