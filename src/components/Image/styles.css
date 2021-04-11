@@ -1,8 +1,60 @@
 .image-container {
-  min-height: 100px;
-  min-width: 100px;
+  width: 100%;
+  position: relative;
+  background-position: cover;
+  overflow: hidden;
   border-radius: var(--image-border);
-  background: transparent;
-  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+img {
+  object-fit: cover;
+  border-radius: var(--image-border);
+  opacity: 1;
+  transition: 0.2s filter ease-in-out;
+}
+
+.image-label {
+  position: absolute;
+  font-family: var(--font-family-2);
+  font-weight: var(--semi-bold);
+  color: var(--white);
+  font-size: var(--eta);
+  left: 24px;
+  bottom: 30px;
+  transition: 0.2s all ease-in-out;
+  z-index: 3;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border-radius: 38px;
+  font-family: var(--font-family-2);
+  outline: none;
+  border: 1px solid var(--red);
   background-color: transparent;
+  color: var(--red);
+  padding: 6px 15px;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+  z-index: 3;
+}
+
+.image-label,
+.btn-delete {
+  opacity: 0;
+}
+
+.image-container:hover img {
+  filter: brightness(30%);
+}
+
+.image-container:hover .btn-delete {
+  opacity: 1;
+}
+
+.image-container:hover .image-label {
+  opacity: 1;
 }

@@ -3,12 +3,11 @@ import "./styles.css";
 
 const Image = ({ source, label }) => {
   return (
-    <div
-      className="image-container"
-      style={{
-        background: `url(${source})`
-      }}
-    ></div>
+    <div className="image-container">
+      <img src={source} alt="my-unsplash" width="100%" />
+      <span className="image-label">{label}</span>
+      <button className="btn-delete">delete</button>
+    </div>
   );
 };
 
