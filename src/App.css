@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
 :root {
   /* fonts */
   --font-family: "Noto Sans", sans-serif;
+  --font-family-2: "Montserrat", sans-serif;
 
   /* color codes */
   --green: #3db46d;
@@ -71,4 +73,22 @@
 
 .smooth {
   transition: 0.3s ease all;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--grey);
+  border-radius: var(--large-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grey);
+  border-radius: var(--large-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--input-border);
 }
