@@ -1,20 +1,11 @@
-import { useState, useEffect } from "react";
-import "./styles.css";
-import { getAllImages } from "../../api/image";
+import { useImageContext } from "../../contexts/ImagesContext";
+
 import Image from "../Image/Image";
 
+import "./styles.css";
+
 const Gallery = () => {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    const getImages = async () => {
-      const result = await getAllImages();
-      setImages([...result]);
-    };
-
-    getImages();
-  }, []);
-
+  const { images } = useImageContext();
   return (
     <div>
       <div className="container">

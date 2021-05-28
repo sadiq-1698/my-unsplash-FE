@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 import "./styles.css";
 
-const Modal = ({ children, modalState, barrierDismiss }) => {
+const Modal = ({ children, modalOpen, closeModal, barrierDismiss }) => {
   return (
     <Fragment>
-      {modalState.modalOpen && (
+      {modalOpen && (
         <div className="modal-backdrop" onClick={handleBarrierClick}>
           <div className="modal-box" onClick={e => handleModalBox(e)}>
             {children}
@@ -18,7 +18,7 @@ const Modal = ({ children, modalState, barrierDismiss }) => {
 
   function handleBarrierClick() {
     if (barrierDismiss !== false) {
-      modalState.setModalOpen(false);
+      closeModal();
     }
   }
 
@@ -29,7 +29,8 @@ const Modal = ({ children, modalState, barrierDismiss }) => {
 };
 
 Modal.propTypes = {
-  modalState: PropTypes.object.isRequired,
+  modalOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   barrierDismiss: PropTypes.bool
 };
