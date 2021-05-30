@@ -15,22 +15,25 @@ export const useImageContext = () => useContext(ImagesContext);
 
 const ImagesProvider = ({ children }) => {
   const [images, setImages] = useState([]);
+  const [currentImage, setCurrentImage] = useState();
+
+  const getImages = async () => {
+    const result = await getAllImages();
+    setImages([...result]);
+  };
 
   useEffect(() => {
-    const getImages = async () => {
-      const result = await getAllImages();
-      setImages([...result]);
-    };
-
     getImages();
   }, []);
 
   const value = useMemo(
     () => ({
       images,
-      setImages
+      setImages,
+      currentImage,
+      setCurrentImage
     }),
-    [images, setImages]
+    [images, setImages, currentImage, setCurrentImage]
   );
 
   return (

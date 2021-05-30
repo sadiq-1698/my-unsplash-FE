@@ -28,7 +28,6 @@ const DeleteImage = ({ closeModal }) => {
 
   const onSubmitForm = async (_, actions) => {
     actions.setSubmitting(true);
-    console.log("jinglis imaheID", imageId);
     const response = await deleteImage(imageId);
     if (response.statusText === "OK") {
       let initalList = [...images];
