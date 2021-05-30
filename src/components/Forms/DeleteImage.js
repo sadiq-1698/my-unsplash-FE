@@ -1,26 +1,87 @@
 import { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Formik, Form, Field } from "formik";
 
 import ModalButtonSection from "./ModalButtonSection";
 import ModalHeader from "./ModalHeader";
 import Button from "../Button/Button";
 
 import "./styles.css";
+import FieldWrapper from "./FieldWrapper";
+import InputField from "../InputField/InputField";
+import FieldError from "./FieldError";
+import { deleteImage } from "../../api/image";
+import { useImageContext } from "../../contexts/ImagesContext";
 
-const DeleteImage = ({ closeModal, handleSubmit }) => {
+function validatePassword(value) {
+  let error;
+  if (!value) {
+    error = "Password cannot be empty";
+  } else if (value !== process.env.REACT_APP_PASSWORD) {
+    error = "Incorrect password";
+  }
+  return error;
+}
+
+const DeleteImage = ({ closeModal }) => {
+  const { currentImage: imageId, images, setImages } = useImageContext();
+
+  const onSubmitForm = async (_, actions) => {
+    actions.setSubmitting(true);
+    console.log("jinglis imaheID", imageId);
+    const response = await deleteImage(imageId);
+    if (response.statusText === "OK") {
+      let initalList = [...images];
+      let updatedImageList = initalList.filter(item => item._id !== imageId);
+      setImages([...updatedImageList]);
+      closeModal();
+    }
+    actions.setSubmitting(false);
+  };
+
   return (
     <Fragment>
-      <ModalHeader header="Are you sure ?" />
-      <ModalButtonSection handleCancel={closeModal}>
-        <Button color="red" text="Delete" onClick={handleSubmit} />
-      </ModalButtonSection>
+      <ModalHeader header="Delete Image" />
+
+      <Formik
+        initialValues={{
+          password: ""
+        }}
+        onSubmit={onSubmitForm}
+      >
+        {({ errors, touched, isSubmitting, validateForm, submitForm }) => (
+          <Form>
+            <FieldWrapper label="Password">
+              <Field
+                name="password"
+                as={InputField}
+                placeholder="Enter your password to confirm"
+                type="password"
+                validate={validatePassword}
+              />
+              {errors.password && touched.password ? (
+                <FieldError message={errors.password} />
+              ) : null}
+            </FieldWrapper>
+
+            <ModalButtonSection handleCancel={closeModal}>
+              <Button
+                color="red"
+                type="submit"
+                text="Delete"
+                onClick={() => validateForm().then(() => submitForm())}
+                disabled={isSubmitting}
+              />
+            </ModalButtonSection>
+          </Form>
+        )}
+      </Formik>
     </Fragment>
   );
 };
 
 DeleteImage.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired
 };
 
 export default DeleteImage;

@@ -10,6 +10,16 @@
   font-family: var(--font-family);
   font-size: var(--zeta);
   font-weight: var(--semi-bold);
+  transition: 0.2s all ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button.disabled {
+  background-color: #cccccc;
+  color: #666666;
 }
 
 .button.color-red {

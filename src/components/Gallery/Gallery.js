@@ -12,7 +12,7 @@ const Gallery = () => {
         {images.map(({ _id, url, label }) => {
           return (
             <div key={_id}>
-              <Image source={url} label={label} />
+              <Image source={url} label={label} id={_id} />
             </div>
           );
         })}

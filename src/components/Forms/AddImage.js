@@ -10,6 +10,7 @@ import { useImageContext } from "../../contexts/ImagesContext";
 import ModalHeader from "./ModalHeader";
 import InputField from "../InputField/InputField";
 import FieldWrapper from "./FieldWrapper";
+import FieldError from "./FieldError";
 import ModalButtonSection from "./ModalButtonSection";
 import Button from "../Button/Button";
 
@@ -29,7 +30,7 @@ const AddImage = ({ closeModal }) => {
     if (response.data) {
       let addedImage = response.data;
       let newListOfImages = [addedImage, ...images];
-      setImages(newListOfImages);
+      setImages([...newListOfImages]);
       closeModal();
     }
     actions.setSubmitting(false);
@@ -50,7 +51,9 @@ const AddImage = ({ closeModal }) => {
           <Form>
             <FieldWrapper label="Label">
               <Field name="label" as={InputField} placeholder="Add a label" />
-              {errors.label && touched.label ? <div>{errors.label}</div> : null}
+              {errors.label && touched.label ? (
+                <FieldError message={errors.label} />
+              ) : null}
             </FieldWrapper>
 
             <FieldWrapper label="Photo URL">
@@ -59,7 +62,9 @@ const AddImage = ({ closeModal }) => {
                 as={InputField}
                 placeholder="Paste the URL of the photo here"
               />
-              {errors.url && touched.url ? <div>{errors.url}</div> : null}
+              {errors.url && touched.url ? (
+                <FieldError message={errors.url} />
+              ) : null}
             </FieldWrapper>
 
             <ModalButtonSection handleCancel={closeModal}>

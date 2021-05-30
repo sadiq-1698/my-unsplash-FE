@@ -34,3 +34,11 @@
   margin-top: 18px;
   justify-content: space-between;
 }
+
+.field-error {
+  font-family: var(--font-family);
+  font-weight: var(--regular);
+  font-size: var(--beta);
+  margin: 4px 0;
+  color: var(--red);
+}

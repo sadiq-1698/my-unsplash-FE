@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 
 const Button = ({ color, text, ...props }) => {
   return (
-    <button className={`color-${color} button`} {...props}>
+    <button
+      className={`color-${color} button ${props.disabled ? "disabled" : ""}`}
+      {...props}
+    >
       {text}
     </button>
   );
