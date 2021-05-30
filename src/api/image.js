@@ -6,10 +6,15 @@ const addImage = async data => {
   return response;
 };
 
+const deleteImage = async imageId => {
+  const response = await axios.delete(API_URL + "image/" + imageId);
+  return response;
+};
+
 const getAllImages = async () => {
   const response = await axios.get(API_URL + "image/all");
   const { data } = response;
   return data;
 };
 
-export { addImage, getAllImages };
+export { addImage, deleteImage, getAllImages };
