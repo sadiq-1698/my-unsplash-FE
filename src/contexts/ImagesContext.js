@@ -23,6 +23,7 @@ const ImagesProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // calling api to fetch images
     getImages();
   }, []);
 
