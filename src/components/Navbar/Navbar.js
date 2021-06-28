@@ -1,13 +1,30 @@
-import "./styles.css";
+import { IMAGE_UPLOADER_LINK } from "../../globals/constants";
+
+import { useImageContext } from "../../contexts/ImagesContext";
+
 import Button from "../Button/Button";
 import InputField from "../InputField/InputField";
-import { IMAGE_UPLOADER_LINK } from "../../globals/constants";
-import useModal from "../../hooks/useModal";
 import Modal from "../Modal/Modal";
 import AddImage from "../Forms/AddImage";
 
+import useModal from "../../hooks/useModal";
+
+import "./styles.css";
+
 const Navbar = () => {
   const { toggleModal, modalOpen, closeModal } = useModal();
+  const { images, setDisplayImages } = useImageContext();
+
+  const matchFunction = (img, searchText) => {
+    let label = img.label.toLowerCase();
+    return label.includes(searchText);
+  };
+
+  const searchImage = e => {
+    let searchText = e.target.value.trim().toLowerCase();
+    const resultArray = images.filter(img => matchFunction(img, searchText));
+    setDisplayImages([...resultArray]);
+  };
 
   return (
     <div>
@@ -19,7 +36,11 @@ const Navbar = () => {
             alt="logo"
           />
 
-          <InputField iconPrefix placeholder="Search by name" />
+          <InputField
+            iconPrefix
+            placeholder="Search by name"
+            onChange={searchImage}
+          />
         </div>
 
         <div>

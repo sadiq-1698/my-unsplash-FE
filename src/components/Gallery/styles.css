@@ -1,7 +1,12 @@
 .container {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 5em;
-  -webkit-align-items: start;
+  grid-column-gap: 5em;
   align-items: start;
+}
+
+.container .column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-row-gap: 5em;
 }
