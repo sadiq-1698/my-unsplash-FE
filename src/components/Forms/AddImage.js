@@ -22,7 +22,7 @@ const AddImageSchema = Yup.object().shape({
 });
 
 const AddImage = ({ closeModal }) => {
-  const { images, setImages } = useImageContext();
+  const { images, setImages, setDisplayImages } = useImageContext();
 
   const onSubmitForm = async (values, actions) => {
     actions.setSubmitting(true);
@@ -31,6 +31,7 @@ const AddImage = ({ closeModal }) => {
       let addedImage = response.data;
       let newListOfImages = [addedImage, ...images];
       setImages([...newListOfImages]);
+      setDisplayImages([...newListOfImages]);
       closeModal();
     }
     actions.setSubmitting(false);

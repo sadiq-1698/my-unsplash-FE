@@ -24,7 +24,12 @@ function validatePassword(value) {
 }
 
 const DeleteImage = ({ closeModal }) => {
-  const { currentImage: imageId, images, setImages } = useImageContext();
+  const {
+    currentImage: imageId,
+    images,
+    setImages,
+    setDisplayImages
+  } = useImageContext();
 
   const onSubmitForm = async (_, actions) => {
     actions.setSubmitting(true);
@@ -33,6 +38,7 @@ const DeleteImage = ({ closeModal }) => {
       let initalList = [...images];
       let updatedImageList = initalList.filter(item => item._id !== imageId);
       setImages([...updatedImageList]);
+      setDisplayImages([...updatedImageList]);
       closeModal();
     }
     actions.setSubmitting(false);
