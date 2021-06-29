@@ -28,8 +28,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="d-flex justify-space-between">
-        <div className="d-flex">
+      <div className="d-flex justify-space-between nav-content">
+        <div className="d-flex left">
           <img
             className="nav-logo"
             src={process.env.PUBLIC_URL + "/my_unsplash_logo.svg"}
@@ -43,7 +43,7 @@ const Navbar = () => {
           />
         </div>
 
-        <div>
+        <div className="right">
           <a
             className="link nav-link"
             href={IMAGE_UPLOADER_LINK}
