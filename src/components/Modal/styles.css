@@ -10,6 +10,12 @@
   outline: none;
 }
 
+@media screen and (max-width: 700px) {
+  .modal-backdrop {
+    padding: 0 10px;
+  }
+}
+
 .modal-box {
   z-index: var(--modal-box-index);
   border-radius: var(--larger-border);
