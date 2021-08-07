@@ -4,6 +4,7 @@ import Image from "../Image/Image";
 
 import "./styles.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import Loader from "../Loader/Loader";
 
 const getImage = (imgDetails, index, mod, res) => {
   let { _id, url, label } = imgDetails;
@@ -81,6 +82,7 @@ const Gallery = () => {
 
   return (
     <>
+      {displayImages && displayImages.length < 1 && <Loader />}
       {isLargerScreen && <LargerScreen displayImages={displayImages} />}
       {isTabletScreen && <TabletScreen displayImages={displayImages} />}
       {isMobileScreen && <MobileScreen displayImages={displayImages} />}
