@@ -13,8 +13,8 @@ jobs:
           ref: ${{github.event.after}}
       - name: Get Commit Message
         run: |
-          MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[skip\:(.*|\ .*)\]/\1/p')
-          echo "COMMIT_MSG=${MSG}" >> $GITHUB_ENV
+          MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
+          echo "COMMIT_MESSAGE=${MSG}" >> $GITHUB_ENV
       - name: Echo commit message
         run: |
-          echo "Commit SHA: ${{github.event.after}}, commit message: ${COMMIT_MSG} "
+          echo "Commit SHA: ${{github.event.after}}, commit message: ${COMMIT_MESSAGE}"
