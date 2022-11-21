@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Conditionally Run
-        if: contains(fromJson('["push", "pull_request"]'), github.event_name)
+        if: contains(fromJson('["psh", "pull_request"]'), github.event_name)
         run: |
           echo "let's run"
 
