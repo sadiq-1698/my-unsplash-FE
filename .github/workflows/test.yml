@@ -5,12 +5,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      uses: web3j/substr-action@v1.2
-      with:
-        value: 'Mona the Octocat'
-        start: '9'
-
-      uses: web3j/substr-action@v1.2
-      with:
-        value: 'Mona the Octocat'
-        start: '9'
+      - uses: web3j/substr-action@v1.2
+        with:
+          value: "Mona the Octocat"
+          start: "9"
