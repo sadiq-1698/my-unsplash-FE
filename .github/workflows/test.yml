@@ -2,12 +2,21 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  send_notification:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Conditionally Run
-        if: contains(fromJson('["push", "pull_request"]'), github.event_name)
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.after}}
+      - name: Get Commit Message
         run: |
-          echo "let's run"
+          MSG=$(git log --format=%B -n 1 ${{github.event.after}})
+          echo "::set-env name=COMMIT_MESSAGE::${MSG}"
+      - name: Echo commit message
+        run: echo "Commit SHA: ${{github.event.after}}, commit message: ${{env.COMMIT_MESSAGE}} (or ${COMMIT_MESSAGE})"
+
 
 
