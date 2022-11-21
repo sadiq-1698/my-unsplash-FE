@@ -5,7 +5,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - uses: web3j/substr-action@v1.2
-        with:
-          value: "Mona the Octocat"
-          start: "9"
+      - name: Conditionally Run
+        if: contains(fromJson('["push", "pull_request"]'), github.event_name)
+        run: |
+          echo "let's run"
+
+
