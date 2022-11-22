@@ -14,18 +14,17 @@ jobs:
         run: |
           MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
           echo "TEST_TAG=${MSG}" >> $GITHUB_ENV
-      - name: Get type of the test
-        id: type_of_test
-        run: |
-          TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
-          echo "TYPE_OF_TEST=${TEST_TYPE}" >> $GITHUB_OUTPUT
-      - name: Get the file name
-        id: file_name
-        run: |
-          if [ contains(env.TEST_TAG, '-') ];
-            then FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)" && echo "NAME_OF_FILE=${FILE_NAME}" >> $GITHUB_OUTPUT; 
-            else echo "NAME_OF_FILE='-'" >> $GITHUB_OUTPUT; 
-          fi
+          echo " ${{ env.TEST_TAG }}"
+      # - name: Get type of the test
+      #   id: type_of_test
+      #   run: |
+      #     TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
+      #     echo "TYPE_OF_TEST=${TEST_TYPE}" >> $GITHUB_OUTPUT
+      # - name: Get the file name
+      #   id: file_name
+      #   run: |
+      #     FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)"
+      #     echo "NAME_OF_FILE=${FILE_NAME}" >> $GITHUB_OUTPUT
 
     outputs:
       test_type: "${{ steps.type_of_test.outputs.TYPE_OF_TEST }}"
