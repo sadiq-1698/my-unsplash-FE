@@ -47,9 +47,8 @@ jobs:
     name: Check if file name exists
     runs-on: ubuntu-latest
 
-    # steps:
-    #     uses: actions/checkout@v1
-    #   - name: My first step
-    #   - uses: ./src/api/
-    #   - name: What man this
-    #       run: ls
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Symfony
+        working-directory: ./src
+        run: ls
