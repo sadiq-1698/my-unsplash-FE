@@ -32,7 +32,7 @@ jobs:
 
     outputs:
       test_type: $( echo "${{steps.type_of_test.outputs.TYPE_OF_TEST}}" )
-      file_name: $( echo "${{ steps.file_name.outputs.NAME_OF_FILE }}" )
+      file_name: $( echo "${{steps.file_name.outputs.NAME_OF_FILE }}" )
 
   run_cypress:
     needs: send_notification
@@ -41,4 +41,4 @@ jobs:
     steps:
       - name: Jinglis Boda
         run: |
-          echo "${{ contains(fromJson('["public", "private"]'), needs.send_notification.outputs.test_type) }}"
+          echo "${{ needs.send_notification.outputs.test_type }}"
