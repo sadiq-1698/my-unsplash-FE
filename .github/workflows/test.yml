@@ -28,7 +28,7 @@ jobs:
   run_cypress:
     if: ${{ always() }}
     needs: send_notification
-    if: ${{ env.MORE == 'private' || env.MORE == 'public' }}
+    # if: ${{ env.MORE == 'private' || env.MORE == 'public' }}
     name: What a wow
     runs-on: ubuntu-20.04
     steps:
