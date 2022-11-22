@@ -25,7 +25,6 @@ jobs:
         run: |
           FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)"
           echo "NAME_OF_FILE=${FILE_NAME}" >> $GITHUB_OUTPUT
-          echo "${{ steps.type-of-test.outputs.MORE }}"
 
     outputs:
       test_type: "${{ steps.type_of_test.outputs.TYPE_OF_TEST }}"
@@ -48,10 +47,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check file existence
-        id: check_files
-        uses: andstor/file-existence-action@v2
-        with:
-          files: "src/api/${{needs.get_commit_test_tag.outputs.file_name}}.js"
-      - name: File exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: echo All files exists
+        run: ls
+        # id: check_files
+      #   uses: andstor/file-existence-action@v2
+      #   with:
+      #     files: "src/api/${{needs.get_commit_test_tag.outputs.file_name}}.js"
+      # - name: File exists
+      #   if: steps.check_files.outputs.files_exists == 'true'
+      #   run: echo All files exists
