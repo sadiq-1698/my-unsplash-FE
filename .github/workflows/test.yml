@@ -24,3 +24,5 @@ jobs:
           TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
           echo "SOME=${FILE_NAME}" >> $GITHUB_ENV
           echo "MORE=${TEST_TYPE}" >> $GITHUB_ENV
+          echo ${SOME}
+          echo ${MORE}
