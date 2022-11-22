@@ -14,7 +14,7 @@ jobs:
         run: |
           MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
           echo "TEST_TAG=${MSG}" >> $GITHUB_ENV
-          echo $TEST_TAG
+          echo ${TEST_TAG}
 
       # - name: Get type of the test
       #   id: type_of_test
