@@ -22,5 +22,5 @@ jobs:
         run: |
           FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)"
           TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
-          echo "${FILE_NAME}" >> $GITHUB_ENV
-          echo "${TEST_TYPE}" >> $GITHUB_ENV
+          echo "SOME=${FILE_NAME}" >> $GITHUB_ENV
+          echo "MORE=${TEST_TYPE}" >> $GITHUB_ENV
