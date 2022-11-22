@@ -10,7 +10,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{github.event.after}}
-      - name: Get Commit Message
+      - name: Get Commit Messages
         run: |
           MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
           echo "TEST_TAG=${MSG}" >> $GITHUB_ENV
