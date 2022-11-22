@@ -14,11 +14,11 @@ jobs:
       - name: Get Commit Message
         run: |
           MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
-          echo "COMMIT_MESSAGE=${MSG}" >> $GITHUB_ENV
+          echo "TEST_TAG=${MSG}" >> $GITHUB_ENV
       - name: Echo commit message
         run: |
-          echo "Commit SHA: ${{github.event.after}}, commit message: ${COMMIT_MESSAGE}"
+          echo "Commit SHA: ${{github.event.after}}, commit message: ${TEST_TAG}"
       - name: Get type of the test and file name
         run: |
-          TYPE=$(${COMMIT_MESSAGE} | sed -En '(?<=-).*')
-          echo "${TYPE}"
+          FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)"
+          echo "${FILE_NAME}"
