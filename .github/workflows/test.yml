@@ -41,4 +41,4 @@ jobs:
     steps:
       - name: Jinglis Boda
         run: |
-          echo "${{ needs.send_notification.outputs.test_type == "public" }}"
+          echo "${{ needs.send_notification.outputs.test_type == public }}"
