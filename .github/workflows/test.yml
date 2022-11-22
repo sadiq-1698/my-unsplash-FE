@@ -35,6 +35,7 @@ jobs:
     if: "${{ needs.get_commit_test_tag.outputs.test_type == 'public' || needs.get_commit_test_tag.outputs.test_type == 'private' }}"
     name: Check if test type is valid
     runs-on: ubuntu-latest
+
     steps:
       - name: Print test type validity
         run: |
@@ -45,13 +46,10 @@ jobs:
     if: "${{ needs.check_valid_test_type.result == 'success' }}"
     name: Check if file name exists
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check file existence
-        run: cd "${{ github.workspace }}" && ls
-        # id: check_files
-      #   uses: andstor/file-existence-action@v2
-      #   with:
-      #     files: "src/api/${{needs.get_commit_test_tag.outputs.file_name}}.js"
-      # - name: File exists
-      #   if: steps.check_files.outputs.files_exists == 'true'
-      #   run: echo All files exists
+        uses: actions/checkout@v1
+      - name: My first step
+      - uses: ./src/api/
+      - name: What man this
+          run: ls
