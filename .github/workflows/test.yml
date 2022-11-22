@@ -55,7 +55,7 @@ jobs:
         run: |
           if [ -e api/${{ needs.get_commit_test_tag.outputs.file_name }}.js ];
              then echo "FILE_VALID=true" >> $GITHUB_OUTPUT; 
-             else echo "FILE_VALID=false" >> $GITHUB_OUTPUT; 
+             else echo "FILE_VALID=false" >> $GITHUB_OUTPUT && echo "Invalid file"; 
            fi
 
     outputs:
