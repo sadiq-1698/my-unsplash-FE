@@ -67,6 +67,6 @@ jobs:
     name: Run individual spec
     runs-on: ubuntu-latest
 
-      steps:
-        - name: Run test
-          run: echo "success"
+    steps:
+      - name: Run test
+        run: echo "success"
