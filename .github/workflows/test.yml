@@ -36,10 +36,9 @@ jobs:
 
   run_cypress:
     needs: send_notification
-    if: ${{ needs.send_notification.outputs.test_type == 'public' }}
     name: What a wow
     runs-on: ubuntu-20.04
     steps:
       - name: Jinglis Boda
         run: |
-          echo "${{ needs.send_notification.steps.type-of-test.outputs }}"
+          echo "${{ needs.send_notification.outputs.test_type == 'public' }}"
