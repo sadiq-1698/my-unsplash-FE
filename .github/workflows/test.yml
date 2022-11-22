@@ -31,7 +31,7 @@ jobs:
           echo "${{ steps.type-of-test.outputs.MORE }}"
 
     outputs:
-      test_type: $( echo "${{steps.type_of_test.outputs.TYPE_OF_TEST}}" )
+      test_type: "${{steps.type_of_test.outputs.TYPE_OF_TEST}}"
       file_name: $( echo "${{steps.file_name.outputs.NAME_OF_FILE }}" )
 
   run_cypress:
