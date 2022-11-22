@@ -26,6 +26,7 @@ jobs:
           echo "MORE=${TEST_TYPE}" >> $GITHUB_ENV
 
   run_cypress:
+    if: ${{ always() }}
     needs: send_notification
     if: ${{ env.MORE == 'private' || env.MORE == 'public' }}
     name: What a wow
