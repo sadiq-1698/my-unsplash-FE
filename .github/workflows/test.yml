@@ -28,6 +28,7 @@ jobs:
         run: |
           FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)"
           echo "SOME=${FILE_NAME}" >> $GITHUB_OUTPUT
+          echo "${{ steps.type-of-test.outputs.MORE }}"
 
   run_cypress:
     if: ${{ always() }}
