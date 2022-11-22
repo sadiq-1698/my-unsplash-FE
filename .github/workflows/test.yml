@@ -18,12 +18,16 @@ jobs:
       - name: Echo commit message
         run: |
           echo "Commit SHA: ${{github.event.after}}, commit message: ${TEST_TAG}"
-      - name: Get type of the test and file name
+      - name: Get type of the test
+        id: type-of-test
+        run: |
+          TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
+          echo "MORE=${TEST_TYPE}" >> $GITHUB_OUTPUT
+      - name: Get the file name
+        id: file-name
         run: |
           FILE_NAME="$(echo $TEST_TAG | grep -P '(?<=-).*' -o)"
-          TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
-          echo "SOME=${FILE_NAME}" >> $GITHUB_ENV
-          echo "MORE=${TEST_TYPE}" >> $GITHUB_ENV
+          echo "SOME=${FILE_NAME}" >> $GITHUB_OUTPUT
 
   run_cypress:
     if: ${{ always() }}
@@ -32,4 +36,4 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Jinglis Boda
-        run: echo "${{ env.TEST_TAG }}"
+        run: echo "${{ jobs.send_notification.steps.type-of-test.outputs.MORE }}"
