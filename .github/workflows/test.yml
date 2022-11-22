@@ -46,6 +46,7 @@ jobs:
     if: "${{ needs.check_valid_test_type.result == 'success' }}"
     name: Check if file name exists
     runs-on: ubuntu-latest
+    steps:
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v2
