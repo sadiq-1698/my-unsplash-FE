@@ -51,4 +51,4 @@ jobs:
       - uses: actions/checkout@v1
       - name: Setup Symfony
         working-directory: ./src/api
-        run: test -f ${{ needs.get_commit_test_tag.outputs.file_name }}.js && echo "success"
+        run: test -f ${{ needs.get_commit_test_tag.outputs.file_name }}.js && echo "successs"
