@@ -42,4 +42,4 @@ jobs:
     steps:
       - name: Jinglis Boda
         run: |
-          echo "success"
+          echo "success 2"
