@@ -48,6 +48,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Find file name in the directory
-        run: pwd
-        # run: |
-        #   test -f src/api/${{needs.send_notification.outputs.file_name}}.js && echo "success"
+        run: |
+          test -f GITHUB_WORKSPACE/src/api/${{needs.send_notification.outputs.file_name}}.js && echo "success"
