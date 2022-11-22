@@ -36,4 +36,4 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Jinglis Boda
-        run: echo "${{ jobs.send_notification.steps.type-of-test.outputs.MORE }}"
+        run: echo "${{ needs.send_notification.steps.type-of-test.outputs.MORE }}"
