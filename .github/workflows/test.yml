@@ -49,6 +49,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Setup Symfony
-        working-directory: ./src/api
-        run: if [ -e ${{ needs.get_commit_test_tag.outputs.file_name }}.js ]; then echo "ok"; else echo "not ok"; fi
+      - name: Check valid file name
+        working-directory: ./src
+        run: if [ -e api/${{ needs.get_commit_test_tag.outputs.file_name }}.js ]; then echo "ok"; else echo "not ok"; fi
