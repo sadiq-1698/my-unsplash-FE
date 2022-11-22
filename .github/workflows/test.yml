@@ -1,5 +1,4 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   get_commit_test_tag:
@@ -69,4 +68,4 @@ jobs:
 
     steps:
       - name: Run test
-        run: echo "successs"
+        run: echo "successss"
