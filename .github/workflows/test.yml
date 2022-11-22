@@ -49,4 +49,4 @@ jobs:
     steps:
       - name: Find file name in the directory
         run: |
-          test -f GITHUB_WORKSPACE/src/api/${{needs.send_notification.outputs.file_name}}.js && echo "success"
+          test -f ${{ github.workspace }}/src/api/${{needs.send_notification.outputs.file_name}}.js && echo "success"
