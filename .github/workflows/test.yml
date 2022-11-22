@@ -46,7 +46,11 @@ jobs:
     if: "${{ needs.check_valid_test_type.result == 'success' }}"
     name: Check if file name exists
     runs-on: ubuntu-latest
-    steps:
-      - name: Find file name in the directory
-        run: |
-          test -f ${{ github.workspace }}/src/api/${{needs.send_notification.outputs.file_name}}.js && echo "success"
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "src/api/${{needs.send_notification.outputs.file_name}}.js"
+      - name: File exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: echo All files exists!
