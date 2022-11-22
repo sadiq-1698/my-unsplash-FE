@@ -50,5 +50,23 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Check valid file name
+        id: check_valid_file
         working-directory: ./src
-        run: if [ -e api/${{ needs.get_commit_test_tag.outputs.file_name }}.js ]; then echo "ok"; else echo "not ok"; fi
+        run: |
+          if [ -e api/${{ needs.get_commit_test_tag.outputs.file_name }}.js ];
+             then echo "FILE_VALID=true" >> $GITHUB_OUTPUT; 
+             else echo "FILE_VALID=false" >> $GITHUB_OUTPUT; 
+           fi
+
+    outputs:
+      file_valid: "${{ steps.check_valid_file.outputs.FILE_VALID }}"
+
+  run_cypress_test:
+    needs: [get_commit_test_tag, check_valid_test_type, check_valid_file_name]
+    if: "${{ needs.check_valid_file_name.outputs.file_valid == 'true' }}"
+    name: Run individual spec
+    runs-on: ubuntu-latest
+
+      steps:
+        - name: Run test
+          run: echo "success"
