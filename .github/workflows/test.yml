@@ -15,7 +15,7 @@ jobs:
           MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
           echo "TEST_TAG=${MSG}" >> $GITHUB_ENV
       - name: Get type of the test
-        if: " ${{ contains(TEST_TAG, '-') }}"
+        if: " ${{ contains(env.TEST_TAG, '-') }}"
         id: type_of_test
         run: |
           TEST_TYPE="$(echo $TEST_TAG | grep -P '^[^-]*' -o)"
