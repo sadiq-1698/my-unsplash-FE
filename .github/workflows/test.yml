@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check file existence
-        run: cd ${GITHUB_WORKSPACE} && ls
+        run: cd "${{ github.workspace }}" && ls
         # id: check_files
       #   uses: andstor/file-existence-action@v2
       #   with:
