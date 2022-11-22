@@ -54,4 +54,4 @@ jobs:
           files: "src/api/${{needs.send_notification.outputs.file_name}}.js"
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'true'
-        run: echo All files exists!
+        run: echo All files exists
