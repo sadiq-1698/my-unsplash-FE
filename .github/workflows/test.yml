@@ -42,4 +42,4 @@ jobs:
     steps:
       - name: Jinglis Boda
         run: |
-          echo "success 3"
+          echo "${{ needs.send_notification.result }}"
