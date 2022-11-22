@@ -28,9 +28,8 @@ jobs:
   run_cypress:
     if: ${{ always() }}
     needs: send_notification
-    # if: ${{ env.MORE == 'private' || env.MORE == 'public' }}
     name: What a wow
     runs-on: ubuntu-20.04
     steps:
       - name: Jinglis Boda
-        run: echo "success"
+        run: echo "${{ env.TEST_TAG }}"
