@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  send_notification:
+  get_commit_test_tag:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,8 +32,8 @@ jobs:
       file_name: "${{ steps.file_name.outputs.NAME_OF_FILE }}"
 
   check_valid_test_type:
-    needs: send_notification
-    if: "${{ needs.send_notification.outputs.test_type == 'public' || needs.send_notification.outputs.test_type == 'private' }}"
+    needs: get_commit_test_tag
+    if: "${{ needs.get_commit_test_tag.outputs.test_type == 'public' || needs.get_commit_test_tag.outputs.test_type == 'private' }}"
     name: Check if test type is valid
     runs-on: ubuntu-latest
     steps:
@@ -42,7 +42,7 @@ jobs:
           echo "Valid test type"
 
   check_valid_file_name:
-    needs: [send_notification, check_valid_test_type]
+    needs: [get_commit_test_tag, check_valid_test_type]
     if: "${{ needs.check_valid_test_type.result == 'success' }}"
     name: Check if file name exists
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
         id: check_files
         uses: andstor/file-existence-action@v2
         with:
-          files: "src/api/${{needs.send_notification.outputs.file_name}}.js"
+          files: "src/api/${{needs.get_commit_test_tag.outputs.file_name}}.js"
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'true'
         run: echo All files exists
