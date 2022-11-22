@@ -15,9 +15,6 @@ jobs:
         run: |
           MSG=$(git log --format=%B -n 1 ${{github.event.after}} | sed -En 's/.*\[test\-(.*|\ .*)\]/\1/p' | awk '{$1=$1;print}')
           echo "TEST_TAG=${MSG}" >> $GITHUB_ENV
-      - name: Echo commit message
-        run: |
-          echo "Commit SHA: ${{github.event.after}}, commit message: ${TEST_TAG}"
       - name: Get type of the test
         id: type_of_test
         run: |
@@ -34,12 +31,22 @@ jobs:
       test_type: "${{ steps.type_of_test.outputs.TYPE_OF_TEST }}"
       file_name: "${{ steps.file_name.outputs.NAME_OF_FILE }}"
 
-  run_cypress:
+  check_valid_test_type:
     needs: send_notification
     if: "${{ needs.send_notification.outputs.test_type == 'public' || needs.send_notification.outputs.test_type == 'private' }}"
-    name: What a wow
-    runs-on: ubuntu-20.04
+    name: Check if test type is valid
+    runs-on: ubuntu-latest
     steps:
-      - name: Jinglis Boda
+      - name: Print test type validity
         run: |
-          echo "${{ needs.send_notification.result }}"
+          echo "Valid test type"
+
+  check_valid_file_name:
+    needs: [send_notification, check_valid_test_type]
+    if: "${{ needs.check_valid_test_type.result == 'success' }}"
+    name: Check if file name exists
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find file name in the directory
+        run: |
+          test -f "src/api/${{needs.send_notification.outputs.file_name}}.js" && echo "success"
