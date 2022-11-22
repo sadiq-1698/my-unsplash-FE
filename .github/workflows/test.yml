@@ -41,4 +41,4 @@ jobs:
     steps:
       - name: Jinglis Boda
         run: |
-          echo "${{ contains(fromJson('["push", "pull_request"]'), needs.send_notification.outputs.test_type) }}"
+          echo "${{ contains(fromJson('["public", "private"]'), needs.send_notification.outputs.test_type) }}"
