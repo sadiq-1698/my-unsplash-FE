@@ -41,4 +41,4 @@ jobs:
     steps:
       - name: Jinglis Boda
         run: |
-          echo "${{ needs.send_notification.outputs.test_type == public }}"
+          echo "${{ contains(fromJson('["push", "pull_request"]'), needs.send_notification.outputs.test_type) }}"
