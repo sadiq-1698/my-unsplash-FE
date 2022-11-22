@@ -69,4 +69,4 @@ jobs:
 
     steps:
       - name: Run test
-        run: echo "success"
+        run: echo "successs"
